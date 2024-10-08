@@ -21,35 +21,31 @@ namespace ConcessionariaApi.Controllers
         }
 
         [HttpPost("adicionar-veiculo")]
-        public IActionResult AdicionarVeiculo(Veiculo veiculo)
+        public void AdicionarVeiculo(Veiculo veiculo)
         {
             _service.Adicionar(veiculo);
-            return Ok(); 
         }
 
-        [HttpPut("editar-pessoa")]
-        public void EditarPessoa(Veiculo v)
+        [HttpGet("listar-veiculo")]
+        public List<Veiculo> ListarVeiculo()
         {
-            _service.Editar(v);
+            return _service.Listar();
         }
 
-        [HttpGet("listar-veiculos")]
-        public IActionResult ListarVeiculos()
+        [HttpPut("editar-veiculo")]
+        public void EditarVeiculo(Veiculo veiculo)
         {
-            var veiculos = _service.Listar();
-            return Ok(veiculos); 
+            _service.Editar(veiculo);
         }
 
-
-        [HttpDelete("remover-veiculo")]
-        public IActionResult RemoverVeiculo(int id)
+        [HttpDelete("deletar-veiculo")]
+        public void DeletarVeiculo(int id)
         {
             _service.Remover(id);
-            return Ok(); 
         }
     }
-
 }
+
 
 
 

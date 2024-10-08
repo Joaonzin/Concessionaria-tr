@@ -1,5 +1,4 @@
-﻿using Concessionaria_tr._01_Entidades;
-using Concessionaria_tr._03_Entidades.DTOs;
+﻿using Concessionaria_tr._03_Entidades;
 using Dapper.Contrib.Extensions;
 using System;
 using System.Collections.Generic;
@@ -10,46 +9,45 @@ using System.Threading.Tasks;
 
 namespace Concessionaria_tr._02_Repositorios
 {
-    public class VendaRepository
+    public class EstoqueRepository
     {
         private readonly string ConnectionString;
 
-        public VendaRepository(string connectionString)
+        public EstoqueRepository(string connectionString)
         {
             ConnectionString = connectionString;
         }
 
-        public void Adicionar(Venda venda)
+        public void Adicionar(Estoque estoque)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            connection.Insert(venda);
+            connection.Insert(estoque);
         }
 
         public void Remover(int id)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            Venda venda = BuscarPorId(id);
-            connection.Delete(venda);
+            Estoque estoque = BuscarPorId(id);
+            connection.Delete(estoque);
         }
 
-        public void Editar(Venda venda)
+        public void Editar(Estoque estoque)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            connection.Update<Venda>(venda);
+            connection.Update<Estoque>(estoque);
         }
 
-        public List<VendaDTO> Listar()
+        public List<Estoque> Listar()
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.GetAll<VendaDTO>().ToList();
+            return connection.GetAll<Estoque>().ToList();
         }
 
-        public Venda BuscarPorId(int id)
+        public Estoque BuscarPorId(int id)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.Get<Venda>(id);
+            return connection.Get<Estoque>(id);
         }
     }
 
 }
-

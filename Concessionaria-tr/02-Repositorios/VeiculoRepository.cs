@@ -13,44 +13,45 @@ namespace Concessionaria_tr._02_Repositorios
 
     public class VeiculoRepository
     {
-        private readonly string _connectionString;
+        private readonly string ConnectionString;
 
         public VeiculoRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
         public void Adicionar(Veiculo veiculo)
         {
-            using var connection = new SQLiteConnection(_connectionString);
-            connection.Insert<Veiculo>(veiculo);
+            using var connection = new SQLiteConnection(ConnectionString);
+            connection.Insert(veiculo);
         }
 
         public void Remover(int id)
         {
-            using var connection = new SQLiteConnection(_connectionString);
+            using var connection = new SQLiteConnection(ConnectionString);
             Veiculo veiculo = BuscarPorId(id);
-            connection.Delete<Veiculo>(veiculo);
+            connection.Delete(veiculo);
         }
 
         public void Editar(Veiculo veiculo)
         {
-            using var connection = new SQLiteConnection(_connectionString);
+            using var connection = new SQLiteConnection(ConnectionString);
             connection.Update<Veiculo>(veiculo);
         }
 
         public List<Veiculo> Listar()
         {
-            using var connection = new SQLiteConnection(_connectionString);
+            using var connection = new SQLiteConnection(ConnectionString);
             return connection.GetAll<Veiculo>().ToList();
         }
 
         public Veiculo BuscarPorId(int id)
         {
-            using var connection = new SQLiteConnection(_connectionString);
+            using var connection = new SQLiteConnection(ConnectionString);
             return connection.Get<Veiculo>(id);
         }
     }
+
 }
 
 

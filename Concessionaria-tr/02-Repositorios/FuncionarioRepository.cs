@@ -1,5 +1,4 @@
-﻿using Concessionaria_tr._01_Entidades;
-using Concessionaria_tr._03_Entidades.DTOs;
+﻿using Concessionaria_tr._03_Entidades;
 using Dapper.Contrib.Extensions;
 using System;
 using System.Collections.Generic;
@@ -10,46 +9,45 @@ using System.Threading.Tasks;
 
 namespace Concessionaria_tr._02_Repositorios
 {
-    public class VendaRepository
+    public class FuncionarioRepository
     {
         private readonly string ConnectionString;
 
-        public VendaRepository(string connectionString)
+        public FuncionarioRepository(string connectionString)
         {
             ConnectionString = connectionString;
         }
 
-        public void Adicionar(Venda venda)
+        public void Adicionar(Funcionario funcionario)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            connection.Insert(venda);
+            connection.Insert(funcionario);
         }
 
         public void Remover(int id)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            Venda venda = BuscarPorId(id);
-            connection.Delete(venda);
+            Funcionario funcionario = BuscarPorId(id);
+            connection.Delete(funcionario);
         }
 
-        public void Editar(Venda venda)
+        public void Editar(Funcionario funcionario)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            connection.Update<Venda>(venda);
+            connection.Update<Funcionario>(funcionario);
         }
 
-        public List<VendaDTO> Listar()
+        public List<Funcionario> Listar()
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.GetAll<VendaDTO>().ToList();
+            return connection.GetAll<Funcionario>().ToList();
         }
 
-        public Venda BuscarPorId(int id)
+        public Funcionario BuscarPorId(int id)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.Get<Venda>(id);
+            return connection.Get<Funcionario>(id);
         }
     }
 
 }
-

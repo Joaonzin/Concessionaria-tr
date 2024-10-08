@@ -10,38 +10,36 @@ namespace Concessionaria_tr._03_Aplicacao
 {
     public class VeiculoService
     {
-        private readonly VeiculoRepository _repository;
+        public VeiculoRepository repository { get; set; }
 
-        public VeiculoService(string config)
+        public VeiculoService(string _config)
         {
-            _repository = new VeiculoRepository(config);
+            repository = new VeiculoRepository(_config);
         }
 
         public void Adicionar(Veiculo veiculo)
         {
-            _repository.Adicionar(veiculo);
+            repository.Adicionar(veiculo);
         }
 
         public void Remover(int id)
         {
-            _repository.Remover(id);
-        }
-
-        public void Editar(Veiculo veiculo)
-        {
-            _repository.Editar(veiculo);
+            repository.Remover(id);
         }
 
         public List<Veiculo> Listar()
         {
-            return _repository.Listar();
+            return repository.Listar();
         }
 
         public Veiculo BuscarPorId(int id)
         {
-            return _repository.BuscarPorId(id);
+            return repository.BuscarPorId(id);
+        }
+
+        public void Editar(Veiculo editVeiculo)
+        {
+            repository.Editar(editVeiculo);
         }
     }
-
-
 }

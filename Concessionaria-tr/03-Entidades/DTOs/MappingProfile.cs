@@ -12,8 +12,21 @@ namespace Concessionaria_tr._03_Entidades.DTOs
     {
         public MappingProfile()
         {
+            // Mapeamento para Veiculo
             CreateMap<CreateVeiculoDTO, Veiculo>().ReverseMap();
-            CreateMap<CreateVendasDTO, Venda>().ReverseMap();
+
+            // Mapeamento para Venda
+            CreateMap<VendaDTO, Venda>().ReverseMap();
+
+            // Mapeamento para Agendamento
+            CreateMap<AgendamentoDTO, Agendamento>().ReverseMap();
+
+            // Mapeamento para Estoque
+            CreateMap<EstoqueDTO, Estoque>().ReverseMap();
+
+            // Mapeamento para Funcionario
+            CreateMap<FuncionarioDTO, Funcionario>().ReverseMap();
         }
     }
+
 }

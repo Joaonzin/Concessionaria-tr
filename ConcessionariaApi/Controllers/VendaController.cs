@@ -1,63 +1,50 @@
-﻿using Concessionaria_tr._01_Entidades;
+﻿using AutoMapper;
+using Concessionaria_tr._01_Entidades;
 using Concessionaria_tr._01_Services;
+using Concessionaria_tr._03_Aplicacao;
+using Concessionaria_tr._03_Entidades.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.NetworkInformation;
 
 namespace ConcessionariaApi.Controllers
 {
-
-     [ApiController]
+    [ApiController]
     [Route("[controller]")]
     public class VendaController : ControllerBase
     {
         private readonly VendaService _service;
+        private readonly IMapper _mapper;
 
-        public VendaController(VendaService service)
+        public VendaController(IConfiguration config, IMapper mapper)
         {
-            _service = service;
+            string _config = config.GetConnectionString("DefaultConnection");
+            _service = new VendaService(_config);
+            _mapper = mapper;
         }
 
         [HttpPost("adicionar-venda")]
-        public IActionResult Adicionar([FromBody] Venda venda)
+        public void AdicionarVenda(Venda venda)
         {
             _service.Adicionar(venda);
-            return Ok();
         }
-        
-        [HttpPut("editar-venda")]
-        public IActionResult Editar([FromBody] Venda venda)
-        {
-            _service.Editar(venda);
-            return Ok();
-        }
-        
+
         [HttpGet("listar-venda")]
-        public ActionResult<List<Venda>> Listar()
+        public List<VendaDTO> ListarVenda()
         {
             return _service.Listar();
         }
 
-        [HttpDelete("remover-venda")]
-        public IActionResult Remover(int id)
+        [HttpPut("editar-venda")]
+        public void EditarVenda(Venda venda)
+        {
+            _service.Editar(venda);
+        }
+
+        [HttpDelete("deletar-venda")]
+        public void DeletarVenda(int id)
         {
             _service.Remover(id);
-            return Ok();
-        }
-
-        
-
-        
-
-        [HttpGet("buscar-venda{id}")]
-        public ActionResult<Venda> BuscarPorId(int id)
-        {
-            var venda = _service.BuscarPorId(id);
-            if (venda == null)
-            {
-                return NotFound();
-            }
-            return venda;
         }
     }
-
 }
+
