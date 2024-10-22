@@ -1,4 +1,4 @@
-﻿namespace FrontEnd.Models.DTOs
+﻿namespace FrontEnd.Models
 {
     public class Agendamento
     {

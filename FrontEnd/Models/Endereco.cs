@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FrontEnd.Models.DTOs
+namespace FrontEnd.Models
 {
     public class Endereco
     {
