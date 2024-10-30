@@ -1,17 +1,10 @@
-﻿using Concessionaria_tr._03_Entidades.DTOs;
-using Concessionaria_tr._03_Entidades;
-using System;
-using System.Collections.Generic;
+﻿using Concessionaria_tr.Entidades;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Dapper.Contrib.Extensions;
-using AutoMapper;
 
-namespace Concessionaria_tr._02_Repositorios
+namespace Concessionaria_tr.Repositorios
 {
-    public class AgendamentoRepository
+    public class AgendamentoRepository : IAgendamentoRepository
     {
         private readonly string ConnectionString;
         public AgendamentoRepository( string connectionString)

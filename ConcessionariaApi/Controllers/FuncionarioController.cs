@@ -3,6 +3,7 @@
     using AutoMapper;
     using Concessionaria_tr._01_Entidades;
     using Concessionaria_tr._01_Services;
+    using Concessionaria_tr._02_Repositorios.Interface;
     using Concessionaria_tr._03_Aplicacao;
     using Concessionaria_tr._03_Entidades;
     using Microsoft.AspNetCore.Mvc;
@@ -14,7 +15,7 @@
         [Route("[controller]")]
         public class FuncionarioController : ControllerBase
         {
-            private readonly FuncionarioService _service;
+            private readonly IFuncionarioService _service;
             private readonly IMapper _mapper;
 
             public FuncionarioController(IConfiguration config, IMapper mapper)

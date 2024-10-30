@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FrontEnd.Models
+﻿public class Veiculo
 {
-    internal class Veiculo
+    public int Id { get; set; }
+    public string Modelo { get; set; }
+    public string Marca { get; set; }
+    public string Placa { get; set; }
+
+    public override string ToString()
     {
+        return $"Id: {Id} - Modelo: {Modelo} - Marca: {Marca} - Placa: {Placa}";
     }
 }

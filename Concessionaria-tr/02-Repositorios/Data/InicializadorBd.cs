@@ -1,12 +1,6 @@
-﻿using Dapper;
-using System;
-using System.Collections.Generic;
-using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SQLite;
 
-namespace Concessionaria_tr._02_Repositorios.Data
+namespace Concessionaria_tr.Repositorios
 {
     public static class InicializadorBd
     {

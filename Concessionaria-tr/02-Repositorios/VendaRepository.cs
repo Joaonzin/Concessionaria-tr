@@ -1,5 +1,5 @@
-﻿using Concessionaria_tr._01_Entidades;
-using Concessionaria_tr._03_Entidades.DTOs;
+﻿using Concessionaria_tr.Entidades;
+using Concessionaria_tr.Repositorios;
 using Dapper.Contrib.Extensions;
 using System;
 using System.Collections.Generic;
@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Concessionaria_tr._02_Repositorios
+namespace Concessionaria_tr.Repositorios
 {
-    public class VendaRepository
+    public class VendaRepository : IVendaRepository
     {
         private readonly string ConnectionString;
 

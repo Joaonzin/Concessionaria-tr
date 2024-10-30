@@ -1,16 +1,11 @@
-﻿using Concessionaria_tr._02_Repositorios;
-using Concessionaria_tr._03_Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Concessionaria_tr.Repositorios;
+using Concessionaria_tr.Entidades;
 
-namespace Concessionaria_tr._01_Services
+namespace Concessionaria_tr.Services
 {
-    public class EnderecoService
+    public class EnderecoService :IEnderecoService
     {
-        public EnderecoRepository repository { get; set; }
+        public IEnderecoRepository repository { get; set; }
         public EnderecoService(string _config)
         {
             repository = new EnderecoRepository(_config);

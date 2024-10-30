@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Concessionaria_tr._01_Entidades;
 using Concessionaria_tr._01_Services;
+using Concessionaria_tr._02_Repositorios.Interface;
 using Concessionaria_tr._03_Aplicacao;
 using Concessionaria_tr._03_Entidades;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +13,7 @@ namespace ConcessionariaApi.Controllers
     [Route("[controller]")]
     public class ClienteController : ControllerBase
     {
-        private readonly ClienteService _service;
+        private readonly IClienteService _service;
         private readonly IMapper _mapper;
 
         public ClienteController(IConfiguration config, IMapper mapper)

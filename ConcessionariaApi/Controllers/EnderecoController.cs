@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Concessionaria_tr._01_Services;
+using Concessionaria_tr._02_Repositorios.Interface;
 using Concessionaria_tr._03_Entidades;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,7 +10,7 @@ namespace ConcessionariaApi.Controllers
     [Route("[controller]")]
     public class EnderecoController : ControllerBase
     {
-        private readonly EnderecoService _service;
+        private readonly IEnderecoService _service;
         private readonly IMapper _mapper;
         public EnderecoController(IConfiguration config, IMapper mapper)
         {

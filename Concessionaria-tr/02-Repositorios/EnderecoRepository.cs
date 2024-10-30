@@ -1,11 +1,11 @@
-﻿using Concessionaria_tr._03_Entidades;
+﻿using Concessionaria_tr.Repositorios;
+using Concessionaria_tr.Entidades;
 using Dapper;
 using Dapper.Contrib.Extensions;
 using System.Data.SQLite;
 
-namespace Concessionaria_tr._02_Repositorios
-{
-    public class EnderecoRepository
+namespace Concessionaria_tr.Repositorios
+    public class EnderecoRepository : IEnderecoRepository
     {
         private readonly string ConnectionString;
         public EnderecoRepository(string connectioString)

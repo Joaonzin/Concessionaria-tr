@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using Concessionaria_tr._03_Entidades.DTOs;
-using Concessionaria_tr._03_Entidades;
-using Concessionaria_tr._02_Repositorios;
+using Concessionaria_tr.Entidades;
+using Concessionaria_tr.Entidades;
+using Concessionaria_tr.Repositorios;
 
-namespace Concessionaria_tr._01_Services
+namespace Concessionaria_tr.Services
 {
     public class AgendamentoService
     {
-        public AgendamentoRepository repository { get; set; }
+        public IAgendamentoRepository repository { get; set; }
 
         public AgendamentoService(string _config)
         {

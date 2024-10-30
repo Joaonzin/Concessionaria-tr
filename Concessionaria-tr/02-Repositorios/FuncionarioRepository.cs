@@ -1,15 +1,11 @@
-﻿using Concessionaria_tr._03_Entidades;
+﻿using Concessionaria_tr.Repositorios.Interface;
+using Concessionaria_tr.Entidades;
 using Dapper.Contrib.Extensions;
-using System;
-using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Concessionaria_tr._02_Repositorios
+namespace Concessionaria_tr.Repositorios
 {
-    public class FuncionarioRepository
+    public class FuncionarioRepository : IFuncionarioRepository
     {
         private readonly string ConnectionString;
 

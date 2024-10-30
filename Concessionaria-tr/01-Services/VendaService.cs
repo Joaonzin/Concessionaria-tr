@@ -1,13 +1,12 @@
 ﻿using AutoMapper;
-using Concessionaria_tr._01_Entidades;
-using Concessionaria_tr._02_Repositorios;
-using Concessionaria_tr._03_Entidades.DTOs;
+using Concessionaria_tr.Entidades;
+using Concessionaria_tr.Repositorios;
 
-namespace Concessionaria_tr._01_Services
+namespace Concessionaria_tr.Services
 {
-    public class VendaService
+    public class VendaService :IVendaService
     {
-        public VendaRepository Repository { get; set; }
+        public IVendaRepository Repository { get; set; }
 
         public VendaService(string _config)
         {

@@ -1,11 +1,11 @@
-﻿using Concessionaria_tr._02_Repositorios;
-using Concessionaria_tr._03_Entidades;
+﻿using Concessionaria_tr.Repositorios;
+using Concessionaria_tr.Entidades;
 
-namespace Concessionaria_tr._01_Services
+namespace Concessionaria_tr.Services
 {
-    public class FuncionarioService
+    public class FuncionarioService : IFuncionarioService
     {
-        public FuncionarioRepository repository { get; set; }
+        public IFuncionarioRepository repository { get; set; }
 
         public FuncionarioService(string _config)
         {

@@ -1,16 +1,11 @@
-﻿using Concessionaria_tr._01_Entidades;
-using Concessionaria_tr._02_Repositorios;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Concessionaria_tr.Entidades;
+using Concessionaria_tr.Repositorios;
 
-namespace Concessionaria_tr._03_Aplicacao
+namespace Concessionaria_tr.Services
 {
-    public class VeiculoService
+    public class VeiculoService :IVeiculoService
     {
-        public VeiculoRepository repository { get; set; }
+        public IVeiculoRepository repository { get; set; }
 
         public VeiculoService(string _config)
         {

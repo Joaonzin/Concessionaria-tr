@@ -1,11 +1,11 @@
-﻿using Concessionaria_tr._02_Repositorios;
-using Concessionaria_tr._03_Entidades;
+﻿using Concessionaria_tr.Repositorios;
+using Concessionaria_tr.Entidades;
 
-namespace Concessionaria_tr._01_Services
+namespace Concessionaria_tr.Services
 {
-    public class ClienteService
+    public class ClienteService :IClienteService
     {
-        public ClienteRepository repository { get; set; }
+        public IClienteRepository repository { get; set; }
 
         public ClienteService(string _config)
         {
