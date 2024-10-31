@@ -1,6 +1,9 @@
 ﻿using Concessionaria_tr.Entidades;
 using Concessionaria_tr.Repositorios;
 using Dapper.Contrib.Extensions;
+using Microsoft.Extensions.Configuration;
+using System.Configuration;
+using System.Configuration.Internal;
 using System.Data.SQLite;
 
 namespace Concessionaria_tr.Repositorios
@@ -11,9 +14,9 @@ namespace Concessionaria_tr.Repositorios
     {
         private readonly string ConnectionString;
 
-        public VeiculoRepository(string connectionString)
+        public VeiculoRepository(IConfiguration configuration)
         {
-            ConnectionString = connectionString;
+            ConnectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
         public void Adicionar(Veiculo veiculo)

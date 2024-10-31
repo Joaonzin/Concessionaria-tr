@@ -1,12 +1,10 @@
-﻿namespace ConcessionariaApi.Controllers
+﻿using AutoMapper;
+using Concessionaria_tr.Entidades;
+using Concessionaria_tr.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace ConcessionariaApi.Controllers
 {
-    using AutoMapper;
-    using Concessionaria_tr._01_Entidades;
-    using Concessionaria_tr._01_Services;
-    using Concessionaria_tr._02_Repositorios.Interface;
-    using Concessionaria_tr._03_Aplicacao;
-    using Concessionaria_tr._03_Entidades;
-    using Microsoft.AspNetCore.Mvc;
 
     namespace ConcessionariaApi.Controllers
     {
@@ -18,10 +16,9 @@
             private readonly IFuncionarioService _service;
             private readonly IMapper _mapper;
 
-            public FuncionarioController(IConfiguration config, IMapper mapper)
+            public FuncionarioController(IFuncionarioService funcionarioService, IMapper mapper)
             {
-                string _config = config.GetConnectionString("DefaultConnection");
-                _service = new FuncionarioService(_config);
+                _service = funcionarioService;
                 _mapper = mapper;
             }
 

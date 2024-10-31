@@ -1,6 +1,7 @@
 ﻿using Concessionaria_tr.Entidades;
 using Concessionaria_tr.Repositorios;
 using Dapper.Contrib.Extensions;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -14,9 +15,9 @@ namespace Concessionaria_tr.Repositorios
     {
         private readonly string ConnectionString;
 
-        public VendaRepository(string connectionString)
+        public VendaRepository(IConfiguration configuration)
         {
-            ConnectionString = connectionString;
+            ConnectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
         public void Adicionar(Venda venda)

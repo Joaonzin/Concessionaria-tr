@@ -5,11 +5,11 @@ namespace Concessionaria_tr.Services
 {
     public class ClienteService :IClienteService
     {
-        public IClienteRepository repository { get; set; }
+        private readonly IClienteRepository repository;
 
-        public ClienteService(string _config)
+        public ClienteService(IClienteRepository clienteRepository)
         {
-            repository = new ClienteRepository(_config);
+            repository = clienteRepository;
         }
 
         public void Adicionar(Cliente cliente)

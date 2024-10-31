@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using Concessionaria_tr._01_Entidades;
-using Concessionaria_tr._02_Repositorios;
-using Concessionaria_tr._02_Repositorios.Interface;
-using Concessionaria_tr._03_Aplicacao;
+using Concessionaria_tr.Entidades;
+using Concessionaria_tr.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConcessionariaApi.Controllers
@@ -14,10 +12,9 @@ namespace ConcessionariaApi.Controllers
         private readonly IVeiculoService _service;
         private readonly IMapper _mapper;
 
-        public VeiculoController(IConfiguration config, IMapper mapper)
+        public VeiculoController(IVeiculoService veiculoService, IMapper mapper)
         {
-            string _config = config.GetConnectionString("DefaultConnection");
-            _service = new VeiculoService(_config);
+            _service = veiculoService;
             _mapper = mapper;
         }
 

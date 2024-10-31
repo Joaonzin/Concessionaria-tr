@@ -6,11 +6,11 @@ namespace Concessionaria_tr.Services
 {
     public class VendaService :IVendaService
     {
-        public IVendaRepository Repository { get; set; }
+        private readonly IVendaRepository Repository;
 
-        public VendaService(string _config)
+        public VendaService(IVendaRepository vendaRepository)
         {
-            Repository = new VendaRepository(_config);
+            Repository = vendaRepository;
         }
 
         public void Adicionar(Venda venda)

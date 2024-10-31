@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using Concessionaria_tr._01_Services;
-using Concessionaria_tr._02_Repositorios.Interface;
-using Concessionaria_tr._03_Entidades;
+using Concessionaria_tr.Services;
 using Microsoft.AspNetCore.Mvc;
+using Concessionaria_tr.Entidades;
 
 namespace ConcessionariaApi.Controllers
 {
@@ -12,10 +11,9 @@ namespace ConcessionariaApi.Controllers
     {
         private readonly IEnderecoService _service;
         private readonly IMapper _mapper;
-        public EnderecoController(IConfiguration config, IMapper mapper)
+        public EnderecoController(IEnderecoService enderecoService, IMapper mapper)
         {
-            string _config = config.GetConnectionString("DefaultConnection");
-            _service = new EnderecoService(_config);
+            _service = enderecoService;
             _mapper = mapper;
         }
         [HttpPost("adicionar-endereco")]

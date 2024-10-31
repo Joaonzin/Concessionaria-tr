@@ -5,11 +5,11 @@ namespace Concessionaria_tr.Services
 {
     public class VeiculoService :IVeiculoService
     {
-        public IVeiculoRepository repository { get; set; }
+        private readonly IVeiculoRepository repository;
 
-        public VeiculoService(string _config)
+        public VeiculoService(IVeiculoRepository veiculoRepository)
         {
-            repository = new VeiculoRepository(_config);
+            repository = veiculoRepository;
         }
 
         public void Adicionar(Veiculo veiculo)

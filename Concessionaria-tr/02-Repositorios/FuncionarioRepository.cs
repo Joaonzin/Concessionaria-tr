@@ -1,6 +1,6 @@
-﻿using Concessionaria_tr.Repositorios.Interface;
-using Concessionaria_tr.Entidades;
+﻿using Concessionaria_tr.Entidades;
 using Dapper.Contrib.Extensions;
+using Microsoft.Extensions.Configuration;
 using System.Data.SQLite;
 
 namespace Concessionaria_tr.Repositorios
@@ -9,9 +9,9 @@ namespace Concessionaria_tr.Repositorios
     {
         private readonly string ConnectionString;
 
-        public FuncionarioRepository(string connectionString)
+        public FuncionarioRepository(IConfiguration configuration)
         {
-            ConnectionString = connectionString;
+            ConnectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
         public void Adicionar(Funcionario funcionario)

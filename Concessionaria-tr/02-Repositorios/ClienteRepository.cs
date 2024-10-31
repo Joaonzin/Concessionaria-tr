@@ -2,6 +2,7 @@
 using Concessionaria_tr.Entidades;
 using Dapper.Contrib.Extensions;
 using System.Data.SQLite;
+using Microsoft.Extensions.Configuration;
 
 namespace Concessionaria_tr.Repositorios
 {
@@ -9,9 +10,9 @@ namespace Concessionaria_tr.Repositorios
     {
         private readonly string ConnectionString;
 
-        public ClienteRepository(string connectionString)
+        public ClienteRepository(IConfiguration configuration)
         {
-            ConnectionString = connectionString;
+            ConnectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
         public void Adicionar(Cliente cliente)

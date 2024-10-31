@@ -1,15 +1,16 @@
 ﻿using Concessionaria_tr.Entidades;
 using System.Data.SQLite;
 using Dapper.Contrib.Extensions;
+using Microsoft.Extensions.Configuration;
 
 namespace Concessionaria_tr.Repositorios
 {
     public class AgendamentoRepository : IAgendamentoRepository
     {
         private readonly string ConnectionString;
-        public AgendamentoRepository( string connectionString)
+        public AgendamentoRepository(IConfiguration configuration)
         {
-            ConnectionString = connectionString;
+            ConnectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
         public void Adicionar(Agendamento agendamento)

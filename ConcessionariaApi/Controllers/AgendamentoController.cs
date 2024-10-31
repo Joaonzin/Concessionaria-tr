@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
-using Concessionaria_tr._01_Services;
-using Concessionaria_tr._03_Entidades;
-using Concessionaria_tr._03_Entidades.DTOs;
+using Concessionaria_tr.Services;
+using Concessionaria_tr.Entidades;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConcessionariaApi.Controllers
@@ -10,13 +9,12 @@ namespace ConcessionariaApi.Controllers
     [Route("[controller]")]
     public class AgendamentoController : ControllerBase
     {
-        private readonly AgendamentoService _service;
+        private readonly IAgendamentoService _service;
         private readonly IMapper _mapper;
 
-        public AgendamentoController(IConfiguration config, IMapper mapper)
+        public AgendamentoController(IAgendamentoService agendamentoService, IMapper mapper)
         {
-            string _config = config.GetConnectionString("DefaultConnection");
-            _service = new AgendamentoService(_config);
+            _service = agendamentoService;
             _mapper = mapper;
         }
 

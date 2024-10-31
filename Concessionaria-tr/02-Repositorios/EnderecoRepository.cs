@@ -3,15 +3,18 @@ using Concessionaria_tr.Entidades;
 using Dapper;
 using Dapper.Contrib.Extensions;
 using System.Data.SQLite;
+using Microsoft.Extensions.Configuration;
 
 namespace Concessionaria_tr.Repositorios
+{ 
     public class EnderecoRepository : IEnderecoRepository
     {
         private readonly string ConnectionString;
-        public EnderecoRepository(string connectioString)
+        public EnderecoRepository(IConfiguration configuration)
         {
-            ConnectionString = connectioString;
+            ConnectionString = configuration.GetConnectionString("DefaultConnection");
         }
+
         public void Adicionar(Endereco endereco)
         {
             using var connection = new SQLiteConnection(ConnectionString);

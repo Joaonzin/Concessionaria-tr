@@ -5,11 +5,11 @@ namespace Concessionaria_tr.Services
 {
     public class FuncionarioService : IFuncionarioService
     {
-        public IFuncionarioRepository repository { get; set; }
+        private readonly IFuncionarioRepository repository;
 
-        public FuncionarioService(string _config)
+        public FuncionarioService(IFuncionarioRepository funcionarioRepository)
         {
-            repository = new FuncionarioRepository(_config);
+            repository = funcionarioRepository;
         }
 
         public void Adicionar(Funcionario funcionario)

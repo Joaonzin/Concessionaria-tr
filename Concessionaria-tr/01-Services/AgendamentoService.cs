@@ -1,17 +1,15 @@
-﻿using AutoMapper;
-using Concessionaria_tr.Entidades;
-using Concessionaria_tr.Entidades;
+﻿using Concessionaria_tr.Entidades;
 using Concessionaria_tr.Repositorios;
 
 namespace Concessionaria_tr.Services
 {
-    public class AgendamentoService
+    public class AgendamentoService : IAgendamentoService
     {
-        public IAgendamentoRepository repository { get; set; }
+        private readonly IAgendamentoRepository repository;
 
-        public AgendamentoService(string _config)
+        public AgendamentoService(IAgendamentoRepository agendamentoRepository)
         {
-            repository = new AgendamentoRepository( _config);
+            repository = agendamentoRepository;
         }
 
         public void Adicionar(Agendamento agendamento)

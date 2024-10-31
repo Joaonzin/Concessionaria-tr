@@ -5,10 +5,10 @@ namespace Concessionaria_tr.Services
 {
     public class EnderecoService :IEnderecoService
     {
-        public IEnderecoRepository repository { get; set; }
-        public EnderecoService(string _config)
+        private readonly IEnderecoRepository repository;
+        public EnderecoService(IEnderecoRepository enderecoRepository)
         {
-            repository = new EnderecoRepository(_config);
+            repository = enderecoRepository;
         }
         public void Adicionar(Endereco endereco)
         {

@@ -1,6 +1,6 @@
 ﻿using Concessionaria_tr.Entidades;
 
-namespace Concessionaria_tr.Repositorios
+namespace Concessionaria_tr.Services
 {
     public interface IFuncionarioService
     {
