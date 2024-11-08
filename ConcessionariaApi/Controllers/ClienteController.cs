@@ -20,27 +20,71 @@ namespace ConcessionariaApi.Controllers
         }
 
         [HttpPost("adicionar-cliente")]
-        public void AdicionarCliente(Cliente cliente)
+        public IActionResult AdicionarCliente(Cliente cliente)
         {
-            _service.Adicionar(cliente);
+            try
+            {
+                _service.Adicionar(cliente);
+                return Ok();
+
+            }
+            catch (Exception erro)
+            {
+                return BadRequest($"Ocorreu um erro ao adicionar um Cliente, " +
+                   $"o erro foi \n {erro.Message}");
+                throw;
+            }
+            
         }
 
         [HttpGet("listar-cliente")]
         public List<Cliente> ListarCliente()
         {
-            return _service.Listar();
+            try
+            {
+                return _service.Listar();
+            }
+            catch (Exception erro)
+            {
+                throw new Exception($"Ocorreu um erro ao listar um Cliente, " +
+                                    $"o erro foi \n {erro.Message}");
+            }
+            
         }
 
         [HttpPut("editar-Cliente")]
-        public void EditarCliente(Cliente cliente)
+        public IActionResult EditarCliente(Cliente cliente)
         {
-            _service.Editar(cliente);
+            try
+            {
+                _service.Editar(cliente);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest($"Ocorreu um erro ao editar um Cliente, " +
+                                   $"o erro foi \n {erro.Message}");
+                throw;
+            }
+            
         }
 
         [HttpDelete("deletar-cliente")]
-        public void DeletarCliente(int id)
+        public IActionResult DeletarCliente(int id)
         {
-            _service.Remover(id);
+            try
+            {
+                _service.Remover(id);
+                return Ok();
+            } 
+            catch (Exception erro)
+            {
+                return BadRequest($"Ocorreu um erro ao deletar um Cliente, " +
+                                   $"o erro foi \n {erro.Message}");
+                throw;
+
+            }
+            
         }
     }
 }

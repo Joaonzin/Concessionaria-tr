@@ -4,20 +4,18 @@ namespace Concessionaria_tr.Repositorios
 {
     public static class InicializadorBd
     {
-        private const string ConnectionString = "Data Source=Concessionaria.db";
-
+        private const string ConnectionString = "Data Source=Concessionaria.db";\
         public static void Inicializar()
         {
             using (var connection = new SQLiteConnection(ConnectionString))
-            {
-                connection.Open();
-                string commandoSQL = @"
-                CREATE TABLE IF NOT EXISTS Clientes(
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Nome TEXT NOT NULL,
-                    Cpf TEXT NOT NULL,
+            { dddzddx
+                connection.Open();f
+                string commandoSQL = @"cf
+                CREATE TABLE IF NOT EXISTS Clientes(cf
+                    Id INTEGER PRIMARY KEY AUTOINCREMENT,c cgb
+                    Nome TEXT NOT NULL,c gc g                    Cpf TEXT NOT cvbULL,
                     Telefone TEXT NOT NULL
-                );";
+                );";bvbcvb
 
                 commandoSQL += @"
                 CREATE TABLE IF NOT EXISTS Veiculos(

@@ -23,27 +23,77 @@ namespace ConcessionariaApi.Controllers
             }
 
             [HttpPost("adicionar-Funcionario")]
-            public void AdicionarFuncionario(Funcionario funcionario)
+            public IActionResult AdicionarFuncionario(Funcionario funcionario)
             {
-                _service.Adicionar(funcionario);
+                try
+                {
+                    _service.Adicionar(funcionario);
+                    return Ok();
+
+                }
+                catch (Exception erro)
+                {
+
+                    return BadRequest($"Ocorreu um erro ao adicionar um Funcionario, " +
+                   $"o erro foi \n {erro.Message}");
+                    throw;
+                }
+                
             }
 
             [HttpGet("listar-Funcionario")]
             public List<Funcionario> ListarFuncionario()
             {
-                return _service.Listar();
+                try
+                {
+                    return _service.Listar();
+                }
+                catch (Exception erro)
+                {
+                    throw new Exception($"Ocorreu um erro ao listar um Funcionario, " +
+                                   $"o erro foi \n {erro.Message}");
+
+                }
+                
             }
 
             [HttpPut("editar-Funcionario")]
-            public void EditarFuncionario(Funcionario funcionario)
+            public IActionResult EditarFuncionario(Funcionario funcionario)
             {
-                _service.Editar(funcionario);
+                try
+                {
+                    _service.Editar(funcionario);
+                    return Ok();
+
+                }
+                catch (Exception erro)
+                {
+
+                    return BadRequest($"Ocorreu um erro ao editar um Funcionario, " +
+                   $"o erro foi \n {erro.Message}");
+                    throw;
+                }
+                
             }
 
             [HttpDelete("deletar-Funcionario")]
-            public void DeletarFuncionario(int id)
+            public IActionResult DeletarFuncionario(int id)
             {
-                _service.Remover(id);
+
+                try
+                {
+                    _service.Remover(id);
+                    return Ok();
+
+                }
+                catch (Exception erro)
+                {
+
+                    return BadRequest($"Ocorreu um erro ao deletar um Funcionario, " +
+                   $"o erro foi \n {erro.Message}");
+                    throw;
+                }
+               
             }
         }
     }

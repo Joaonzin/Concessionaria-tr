@@ -18,28 +18,78 @@ namespace ConcessionariaApi.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Endpoint para Adicionar um Agendamento
+        /// </summary>
+        /// <param name="agendamento"></param>
         [HttpPost("adicionar-Agendamento")]
-        public void AdicionarAgendamento(Agendamento agendamento)
+        public IActionResult AdicionarAgendamento(Agendamento agendamento)
         {
-            _service.Adicionar(agendamento);
+            try
+            {
+                _service.Adicionar(agendamento);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest($"Ocorreu um erro ao adicionar um agendamento, " +
+                    $"o erro foi \n {erro.Message}");
+                throw;
+            }
+            
         }
 
         [HttpGet("listar-Agendamento")]
         public List<AgendamentoDTO> ListarAgendamento()
         {
-            return _service.Listar();
+            try
+            {
+                return _service.Listar();
+            }
+            catch (Exception erro)
+            {
+                throw new Exception($"Ocorreu um erro ao listar um agendamento, " +
+                    $"o erro foi \n {erro.Message}");
+            }
+            
         }
 
         [HttpPut("editar-Agendamento")]
-        public void EditarAgendamento(Agendamento agendamento)
+        public IActionResult EditarAgendamento(Agendamento agendamento)
         {
-            _service.Editar(agendamento);
+
+            try
+            {
+                _service.Editar(agendamento);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest($"Ocorreu um erro ao editar um agendamento, " +
+                   $"o erro foi \n {erro.Message}");
+                throw;
+            }
+
+            
         }
 
         [HttpDelete("deletar-Agendamento")]
-        public void DeletarAgendamento(int id)
+        public IActionResult DeletarAgendamento(int id)
         {
-            _service.Remover(id);
+            try
+            {
+
+                _service.Remover(id);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest($"Ocorreu um erro ao deletar um agendamento, " +
+                   $"o erro foi \n {erro.Message}");
+                throw;
+            }
+
         }
     }
 }
