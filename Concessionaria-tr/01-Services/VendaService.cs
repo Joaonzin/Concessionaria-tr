@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿
 using Concessionaria_tr.Entidades;
 using Concessionaria_tr.Repositorios;
 
@@ -18,12 +18,12 @@ namespace Concessionaria_tr.Services
             Repository.Adicionar(venda);
         }
 
-        public void Remover(int id)
+        public void Remover(int id)s
         {
             Repository.Remover(id);
         }
 
-        public List<VendaDTO> Listar()
+        public List<Venda> Listar()
         {
             return Repository.Listar();
         }

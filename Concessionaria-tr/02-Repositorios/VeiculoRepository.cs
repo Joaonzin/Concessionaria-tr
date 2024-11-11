@@ -1,9 +1,6 @@
 ﻿using Concessionaria_tr.Entidades;
-using Concessionaria_tr.Repositorios;
 using Dapper.Contrib.Extensions;
 using Microsoft.Extensions.Configuration;
-using System.Configuration;
-using System.Configuration.Internal;
 using System.Data.SQLite;
 
 namespace Concessionaria_tr.Repositorios

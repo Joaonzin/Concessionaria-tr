@@ -25,7 +25,7 @@ namespace ConcessionariaApi.Controllers
         }
 
         [HttpGet("listar-venda")]
-        public List<VendaDTO> ListarVenda()
+        public List<Venda> ListarVenda()
         {
             return _service.Listar();
         }

@@ -19,7 +19,7 @@ builder.Services.AddSwaggerGen(options =>
     {
         Title = "Concessionaria",
         Version = "v1",
-        Description = "Um Sistema de Agendamento para Ver Carro para comprara"
+        Description = "Um Sistema de Agendamento para ver um Carro na loja para depois comprar"
     });
 });
 InicializadorBd.Inicializar();

@@ -1,4 +1,6 @@
 ﻿
+using static System.Net.Mime.MediaTypeNames;
+
 namespace Concessionaria_tr.Entidades
 {
     public class Venda

@@ -6,7 +6,7 @@ namespace Concessionaria_tr.Services
     {
         void Adicionar(Venda venda);
         void Remover(int id);
-        List<VendaDTO> Listar();
+        List<Venda> Listar();
         Venda BuscarPorId(int id);
         void Editar(Venda editVenda);
     }
