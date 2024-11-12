@@ -36,8 +36,13 @@ namespace ConcessionariaApi.Controllers
                     $"o erro foi \n {erro.Message}");
                 throw;
             }
-            
+
         }
+
+        /// <summary>
+        /// Endpoint para Listando um Agendamento
+        /// </summary>
+        /// <param name="agendamento"></param>
 
         [HttpGet("listar-Agendamento")]
         public List<AgendamentoDTO> ListarAgendamento()
@@ -51,8 +56,12 @@ namespace ConcessionariaApi.Controllers
                 throw new Exception($"Ocorreu um erro ao listar um agendamento, " +
                     $"o erro foi \n {erro.Message}");
             }
-            
+
         }
+        /// <summary>
+        /// Endpoint para Editando um Agendamento
+        /// </summary>
+        /// <param name="agendamento"></param>
 
         [HttpPut("editar-Agendamento")]
         public IActionResult EditarAgendamento(Agendamento agendamento)
@@ -71,9 +80,14 @@ namespace ConcessionariaApi.Controllers
                 throw;
             }
 
-            
+
         }
 
+        /// <summary>
+        /// Endpoint para Deletando um Agendamento
+        /// </summary>
+        /// <param name="agendamento"></param>
+        /// 
         [HttpDelete("deletar-Agendamento")]
         public IActionResult DeletarAgendamento(int id)
         {
@@ -93,5 +107,3 @@ namespace ConcessionariaApi.Controllers
         }
     }
 }
-
-

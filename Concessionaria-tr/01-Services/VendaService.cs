@@ -1,41 +1,47 @@
-﻿using AutoMapper;
+﻿
 using Concessionaria_tr.Entidades;
 using Concessionaria_tr.Repositorios;
 
 namespace Concessionaria_tr.Services
 {
-    public class VendaService :IVendaService
+    public class VendaService : IVendaService
     {
-        private readonly IVendaRepository Repository;
+        private readonly IVendaRepository _repository;
 
         public VendaService(IVendaRepository vendaRepository)
         {
-            Repository = vendaRepository;
+            _repository = vendaRepository;
         }
 
+        
         public void Adicionar(Venda venda)
         {
-            Repository.Adicionar(venda);
+            _repository.Adicionar(venda);
         }
 
+        
         public void Remover(int id)
         {
-            Repository.Remover(id);
+            _repository.Remover(id);
         }
 
-        public List<VendaDTO> Listar()
+        
+        public List<Venda> Listar()
         {
-            return Repository.Listar();
+            return _repository.Listar();  
         }
 
+        
         public Venda BuscarPorId(int id)
         {
-            return Repository.BuscarPorId(id);
+            return _repository.BuscarPorId(id);  
         }
 
-        public void Editar(Venda editVenda)
+        
+        public void Editar(Venda venda)
         {
-            Repository.Editar(editVenda);
+            _repository.Editar(venda);
         }
     }
 }
+

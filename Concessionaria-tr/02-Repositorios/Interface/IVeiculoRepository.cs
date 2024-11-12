@@ -10,11 +10,5 @@ namespace Concessionaria_tr.Repositorios
          List<Veiculo> Listar();
          Veiculo BuscarPorId(int id);
 
-
-
-
-
-
-
     }
 }

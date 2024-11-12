@@ -13,12 +13,5 @@ namespace Concessionaria_tr.Repositorios
          List<Cliente> Listar();
 
          Cliente BuscarPorId(int id);
-
-
-
-
-
-
-
     }
 }

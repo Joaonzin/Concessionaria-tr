@@ -4,92 +4,86 @@ namespace Concessionaria_tr.Repositorios
 {
     public static class InicializadorBd
     {
-        private const string ConnectionString = "Data Source=Concessionaria.db";\
+        private const string ConnectionString = "Data Source=Concessionaria.db";
+
         public static void Inicializar()
         {
             using (var connection = new SQLiteConnection(ConnectionString))
-            { dddzddx
-                connection.Open();f
-                string commandoSQL = @"cf
-                CREATE TABLE IF NOT EXISTS Clientes(cf
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,c cgb
-                    Nome TEXT NOT NULL,c gc g                    Cpf TEXT NOT cvbULL,
-                    Telefone TEXT NOT NULL
-                );";bvbcvb
+            {
+                connection.Open();
+
+                string commandoSQL = @"
+                    CREATE TABLE IF NOT EXISTS Clientes
+                    (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Nome TEXT NOT NULL,
+                        Telefone TEXT NOT NULL,
+                        Cpf TEXT NOT NULL
+                    );
+                ";
 
                 commandoSQL += @"
-                CREATE TABLE IF NOT EXISTS Veiculos(
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Marca TEXT NOT NULL,
-                    Modelo TEXT NOT NULL,
-                    Ano INTEGER NOT NULL,
-                    Preco REAL NOT NULL
-                );";
+                    CREATE TABLE IF NOT EXISTS Veiculos
+                    (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Marca TEXT NOT NULL,
+                        Modelo TEXT NOT NULL,
+                        Ano INTEGER NOT NULL,
+                        Preco REAL NOT NULL,
+                        Placa TEXT NOT NULL,
+                        Disponivel INTEGER NOT NULL  -- 0 para não disponível, 1 para disponível
+                    );
+                ";
 
                 commandoSQL += @"
-                CREATE TABLE IF NOT EXISTS Vendas(
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    VeiculoId INTEGER NOT NULL,
-                    ClienteId INTEGER NOT NULL,
-                    VendedorId INTEGER NOT NULL,
-                    DataVenda TEXT NOT NULL,
-                    ValorFinal REAL NOT NULL,
-                    FOREIGN KEY (VeiculoId) REFERENCES Veiculos(Id),
-                    FOREIGN KEY (ClienteId) REFERENCES Clientes(Id),
-                    FOREIGN KEY (VendedorId) REFERENCES Vendedores(Id)
-                );";
+                    CREATE TABLE IF NOT EXISTS Funcionarios
+                    (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Nome TEXT NOT NULL,
+                        Cargo TEXT NOT NULL,
+                        Salario REAL NOT NULL
+                    );
+                ";
 
                 commandoSQL += @"
-                CREATE TABLE IF NOT EXISTS Agendamentos(
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    ClienteId INTEGER NOT NULL,
-                    VeiculoId INTEGER NOT NULL,
-                    DataHora TEXT NOT NULL,
-                    Motivo TEXT NOT NULL,
-                    FOREIGN KEY (ClienteId) REFERENCES Clientes(Id),
-                    FOREIGN KEY (VeiculoId) REFERENCES Veiculos(Id)
-                );";
+                    CREATE TABLE IF NOT EXISTS Vendas
+                    (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        VeiculoId INTEGER NOT NULL,
+                        ClienteId INTEGER NOT NULL,
+                        FuncionarioId INTEGER NOT NULL,
+                        DataVenda TEXT NOT NULL,  -- Considerar usar DATETIME ou INTEGER para timestamps
+                        ValorFinal REAL NOT NULL,
+                        FOREIGN KEY (VeiculoId) REFERENCES Veiculos(Id),
+                        FOREIGN KEY (ClienteId) REFERENCES Clientes(Id),
+                        FOREIGN KEY (FuncionarioId) REFERENCES Funcionarios(Id)
+                    );
+                ";
 
                 commandoSQL += @"
-                CREATE TABLE IF NOT EXISTS Estoque(
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    VeiculoId INTEGER NOT NULL,
-                    Quantidade INTEGER NOT NULL,
-                    FOREIGN KEY (VeiculoId) REFERENCES Veiculos(Id)
-                );";
+                    CREATE TABLE IF NOT EXISTS Agendamentos
+                    (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        ClienteId INTEGER NOT NULL,
+                        VeiculoId INTEGER NOT NULL,
+                        DataHora TEXT NOT NULL,
+                        Motivo TEXT NOT NULL,
+                        FOREIGN KEY (ClienteId) REFERENCES Clientes(Id),
+                        FOREIGN KEY (VeiculoId) REFERENCES Veiculos(Id)
+                    );
+                ";
 
                 commandoSQL += @"
-                CREATE TABLE IF NOT EXISTS Oficinas(
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Nome TEXT NOT NULL,
-                    Endereco TEXT NOT NULL
-                );";
-
-                commandoSQL += @"
-                CREATE TABLE IF NOT EXISTS Servicos(
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Descricao TEXT NOT NULL,
-                    Preco REAL NOT NULL
-                );";
-
-                commandoSQL += @"
-                CREATE TABLE IF NOT EXISTS Funcionarios(
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Nome TEXT NOT NULL,
-                    Cargo TEXT NOT NULL,
-                    Salario REAL NOT NULL
-                );";
-
-                commandoSQL += @"   
-                 CREATE TABLE IF NOT EXISTS Enderecos(
-                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                 Rua  TEXT NOT NULL,
-                 Bairro   TEXT NOT NULL,
-                 Numero  INTEGER NOT NULL,
-                 ClienteID  INTEGER NOT NULL
-                 );";
-
-
+                    CREATE TABLE IF NOT EXISTS Enderecos
+                    (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Rua TEXT NOT NULL,
+                        Bairro TEXT NOT NULL,
+                        Numero INTEGER NOT NULL,
+                        ClienteId INTEGER NOT NULL,
+                        FOREIGN KEY (ClienteId) REFERENCES Clientes(Id)
+                    );
+                ";
 
                 using (var command = new SQLiteCommand(commandoSQL, connection))
                 {
@@ -99,4 +93,3 @@ namespace Concessionaria_tr.Repositorios
         }
     }
 }
-

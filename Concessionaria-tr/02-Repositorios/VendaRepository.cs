@@ -1,13 +1,7 @@
 ﻿using Concessionaria_tr.Entidades;
-using Concessionaria_tr.Repositorios;
 using Dapper.Contrib.Extensions;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Concessionaria_tr.Repositorios
 {
@@ -39,10 +33,12 @@ namespace Concessionaria_tr.Repositorios
             connection.Update<Venda>(venda);
         }
 
-        public List<VendaDTO> Listar()
+        public List<Venda> Listar()
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.GetAll<VendaDTO>().ToList();
+            var vendas = connection.GetAll<Venda>().ToList();
+
+            return vendas;
         }
 
         public Venda BuscarPorId(int id)
