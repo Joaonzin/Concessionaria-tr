@@ -22,6 +22,10 @@ namespace ConcessionariaApi.Controllers
                 _mapper = mapper;
             }
 
+            /// <summary>
+            /// Endpoint para Adicionando um Funcionario
+            /// </summary>
+            /// <param name="Funcionario"></param>
             [HttpPost("adicionar-Funcionario")]
             public IActionResult AdicionarFuncionario(Funcionario funcionario)
             {
@@ -38,8 +42,13 @@ namespace ConcessionariaApi.Controllers
                    $"o erro foi \n {erro.Message}");
                     throw;
                 }
-                
+
             }
+
+            /// <summary>
+            /// Endpoint para Litando um Funcionario
+            /// </summary>
+            /// <param name="Funcionario"></param>
 
             [HttpGet("listar-Funcionario")]
             public List<Funcionario> ListarFuncionario()
@@ -54,8 +63,13 @@ namespace ConcessionariaApi.Controllers
                                    $"o erro foi \n {erro.Message}");
 
                 }
-                
+
             }
+
+            /// <summary>
+            /// Endpoint para Editar um Funcionario
+            /// </summary>
+            /// <param name="Funcionario"></param>
 
             [HttpPut("editar-Funcionario")]
             public IActionResult EditarFuncionario(Funcionario funcionario)
@@ -73,8 +87,13 @@ namespace ConcessionariaApi.Controllers
                    $"o erro foi \n {erro.Message}");
                     throw;
                 }
-                
+
             }
+
+            /// <summary>
+            /// Endpoint para Deletar um Funcionario
+            /// </summary>
+            /// <param name="Funcionario"></param>
 
             [HttpDelete("deletar-Funcionario")]
             public IActionResult DeletarFuncionario(int id)
@@ -93,7 +112,7 @@ namespace ConcessionariaApi.Controllers
                    $"o erro foi \n {erro.Message}");
                     throw;
                 }
-               
+
             }
         }
     }

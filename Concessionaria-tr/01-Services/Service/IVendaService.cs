@@ -8,6 +8,6 @@ namespace Concessionaria_tr.Services
         void Remover(int id);
         List<Venda> Listar();
         Venda BuscarPorId(int id);
-        void Editar(Venda editVenda);
+        void Editar(Venda venda);
     }
 }

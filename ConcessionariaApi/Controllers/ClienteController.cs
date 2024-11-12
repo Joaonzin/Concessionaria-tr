@@ -19,6 +19,11 @@ namespace ConcessionariaApi.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Endpoint para Adicionar um Cliente
+        /// </summary>
+        /// <param name="cliente"></param>
+
         [HttpPost("adicionar-cliente")]
         public IActionResult AdicionarCliente(Cliente cliente)
         {
@@ -34,9 +39,12 @@ namespace ConcessionariaApi.Controllers
                    $"o erro foi \n {erro.Message}");
                 throw;
             }
-            
-        }
 
+        }
+        /// <summary>
+        /// Endpoint para Listar um Cliente
+        /// </summary>
+        /// <param name="cliente"></param>
         [HttpGet("listar-cliente")]
         public List<Cliente> ListarCliente()
         {
@@ -49,9 +57,12 @@ namespace ConcessionariaApi.Controllers
                 throw new Exception($"Ocorreu um erro ao listar um Cliente, " +
                                     $"o erro foi \n {erro.Message}");
             }
-            
-        }
 
+        }
+        /// <summary>
+        /// Endpoint para Editar um Cliente
+        /// </summary>
+        /// <param name="cliente"></param>
         [HttpPut("editar-Cliente")]
         public IActionResult EditarCliente(Cliente cliente)
         {
@@ -66,9 +77,12 @@ namespace ConcessionariaApi.Controllers
                                    $"o erro foi \n {erro.Message}");
                 throw;
             }
-            
-        }
 
+        }
+        /// <summary>
+        /// Endpoint para Deletar um Cliente
+        /// </summary>
+        /// <param name="cliente"></param>
         [HttpDelete("deletar-cliente")]
         public IActionResult DeletarCliente(int id)
         {
@@ -76,7 +90,7 @@ namespace ConcessionariaApi.Controllers
             {
                 _service.Remover(id);
                 return Ok();
-            } 
+            }
             catch (Exception erro)
             {
                 return BadRequest($"Ocorreu um erro ao deletar um Cliente, " +
@@ -84,7 +98,7 @@ namespace ConcessionariaApi.Controllers
                 throw;
 
             }
-            
+
         }
     }
 }

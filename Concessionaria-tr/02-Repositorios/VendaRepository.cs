@@ -36,7 +36,9 @@ namespace Concessionaria_tr.Repositorios
         public List<Venda> Listar()
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.GetAll<Venda>().ToList();
+            var vendas = connection.GetAll<Venda>().ToList();
+
+            return vendas;
         }
 
         public Venda BuscarPorId(int id)

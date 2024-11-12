@@ -8,7 +8,7 @@ namespace Concessionaria_tr.Repositorios
         void Adicionar(Venda venda);
         void Remover(int id);
         void Editar(Venda venda);
-        List<Venda> Listar();
+        public List<Venda> Listar();
         Venda BuscarPorId(int id);
 
     }

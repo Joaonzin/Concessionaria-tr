@@ -9,8 +9,7 @@ namespace Concessionaria_tr.Entidades
             // Mapeamento para Veiculo
             CreateMap<CreateVeiculoDTO, Veiculo>().ReverseMap();
 
-            // Mapeamento para Venda
-            CreateMap<VendaDTO, Venda>().ReverseMap();
+            CreateMap<Venda, VendaDTO>().ReverseMap();
 
             // Mapeamento para Agendamento
             CreateMap<AgendamentoDTO, Agendamento>().ReverseMap();

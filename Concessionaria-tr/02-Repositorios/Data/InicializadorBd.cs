@@ -11,6 +11,7 @@ namespace Concessionaria_tr.Repositorios
             using (var connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
+
                 string commandoSQL = @"
                     CREATE TABLE IF NOT EXISTS Clientes
                     (
@@ -50,12 +51,12 @@ namespace Concessionaria_tr.Repositorios
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         VeiculoId INTEGER NOT NULL,
                         ClienteId INTEGER NOT NULL,
-                        VendedorId INTEGER NOT NULL,
-                        DataVenda TEXT NOT NULL,
+                        FuncionarioId INTEGER NOT NULL,
+                        DataVenda TEXT NOT NULL,  -- Considerar usar DATETIME ou INTEGER para timestamps
                         ValorFinal REAL NOT NULL,
                         FOREIGN KEY (VeiculoId) REFERENCES Veiculos(Id),
                         FOREIGN KEY (ClienteId) REFERENCES Clientes(Id),
-                        FOREIGN KEY (VendedorId) REFERENCES Funcionarios(Id)
+                        FOREIGN KEY (FuncionarioId) REFERENCES Funcionarios(Id)
                     );
                 ";
 
@@ -79,12 +80,11 @@ namespace Concessionaria_tr.Repositorios
                         Rua TEXT NOT NULL,
                         Bairro TEXT NOT NULL,
                         Numero INTEGER NOT NULL,
-                        UsuarioId INTEGER NOT NULL,  -- Alterado para UsuarioId
-                        FOREIGN KEY (UsuarioId) REFERENCES Clientes(Id)
+                        ClienteId INTEGER NOT NULL,
+                        FOREIGN KEY (ClienteId) REFERENCES Clientes(Id)
                     );
                 ";
 
-                // Executa os comandos SQL para criar as tabelas
                 using (var command = new SQLiteCommand(commandoSQL, connection))
                 {
                     command.ExecuteNonQuery();
