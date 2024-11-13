@@ -8,7 +8,7 @@ namespace Concessionaria_tr.Repositorios
         void Remover(int id);
         void Editar(Endereco endereco);
         List<Endereco> Listar();
-        List<Endereco> ListarEnderecoAluno(int ClienteId);
+        List<Endereco> ListarEnderecoCliente(int ClienteId);
         Endereco BuscarPorId(int id);
 
     }

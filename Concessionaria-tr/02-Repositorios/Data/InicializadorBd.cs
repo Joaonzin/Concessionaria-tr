@@ -31,7 +31,7 @@ namespace Concessionaria_tr.Repositorios
                         Ano INTEGER NOT NULL,
                         Preco REAL NOT NULL,
                         Placa TEXT NOT NULL,
-                        Disponivel INTEGER NOT NULL  -- 0 para não disponível, 1 para disponível
+                        Disponivel INTEGER NOT NULL
                     );
                 ";
 
@@ -46,19 +46,17 @@ namespace Concessionaria_tr.Repositorios
                 ";
 
                 commandoSQL += @"
-                    CREATE TABLE IF NOT EXISTS Vendas
-                    (
+                    CREATE TABLE IF NOT EXISTS Vendas(
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         VeiculoId INTEGER NOT NULL,
                         ClienteId INTEGER NOT NULL,
                         FuncionarioId INTEGER NOT NULL,
-                        DataVenda TEXT NOT NULL,  -- Considerar usar DATETIME ou INTEGER para timestamps
+                        DataVenda TEXT NOT NULL,
                         ValorFinal REAL NOT NULL,
                         FOREIGN KEY (VeiculoId) REFERENCES Veiculos(Id),
                         FOREIGN KEY (ClienteId) REFERENCES Clientes(Id),
                         FOREIGN KEY (FuncionarioId) REFERENCES Funcionarios(Id)
-                    );
-                ";
+                    );";
 
                 commandoSQL += @"
                     CREATE TABLE IF NOT EXISTS Agendamentos

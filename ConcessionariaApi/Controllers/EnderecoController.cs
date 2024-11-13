@@ -32,7 +32,7 @@ namespace ConcessionariaApi.Controllers
         /// </summary>
         /// <param name="endereco"></param>
         [HttpGet("listar-endereco-Cliente")]
-        public List<Endereco> ListarEnderecoAluno([FromQuery] int ClienteId)
+        public List<Endereco> ListarEnderecoAluno(int ClienteId)
         {
             return _service.ListarEnderecoAluno(ClienteId);
         }
