@@ -24,9 +24,9 @@ namespace Concessionaria_tr.Services
         {
             return repository.Listar();
         }
-        public List<Endereco> ListarEnderecoAluno(int ClienteId)
+        public List<Endereco> ListarEnderecoCliente(int ClienteId)
         {
-            return repository.ListarEnderecoAluno(ClienteId);
+            return repository.ListarEnderecoCliente(ClienteId);
         }
         public Endereco BuscarTimePorId(int id)
         {

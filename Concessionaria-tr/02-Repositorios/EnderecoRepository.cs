@@ -39,7 +39,7 @@ namespace Concessionaria_tr.Repositorios
             return connection.GetAll<Endereco>().ToList();
         }
 
-        public List<Endereco> ListarEnderecoAluno(int ClienteId)
+        public List<Endereco> ListarEnderecoCliente(int ClienteId)
         {
             using var connection = new SQLiteConnection(ConnectionString);
             List<Endereco> list = connection.Query<Endereco>($"SELECT Id, Rua, Bairro, Numero, ClienteId FROM Enderecos WHERE ClienteId = {ClienteId}").ToList();

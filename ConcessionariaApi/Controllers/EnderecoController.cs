@@ -21,38 +21,79 @@ namespace ConcessionariaApi.Controllers
         /// </summary>
         /// <param name="endereco"></param>
         [HttpPost("adicionar-endereco")]
-        public Endereco AdicionarAluno(Endereco enderecoDTO)
+        public IActionResult AdicionarEndereco(Endereco enderecoDTO)
         {
-            Endereco endereco = _mapper.Map<Endereco>(enderecoDTO);
-            _service.Adicionar(endereco);
-            return endereco;
+            try
+            {
+                Endereco endereco = _mapper.Map<Endereco>(enderecoDTO);
+                _service.Adicionar(endereco);
+                return Ok(endereco); 
+            }
+            catch (Exception erro)
+            {
+                
+                return BadRequest($"Ocorreu um erro ao adicionar o Endereco, " +
+                                   $"o erro foi: \n{erro.Message}");
+            }
         }
         /// <summary>
         /// Endpoint para Listando um Endereco
         /// </summary>
         /// <param name="endereco"></param>
         [HttpGet("listar-endereco-Cliente")]
-        public List<Endereco> ListarEnderecoAluno(int ClienteId)
+        public List<Endereco> ListarEnderecoCliente(int ClienteId)
         {
-            return _service.ListarEnderecoAluno(ClienteId);
+            try
+            {
+                return _service.ListarEnderecoCliente(ClienteId);
+            }
+            catch (Exception erro)
+            {
+                throw new Exception($"Ocorreu um erro ao listar um Endereco, " +
+                                    $"o erro foi \n {erro.Message}");
+            }
+            
         }
         /// <summary>
         /// Endpoint para Editando um Endereco
         /// </summary>
         /// <param name="endereco"></param>
         [HttpPut("editar-endereco")]
-        public void EditarEndereco(Endereco p)
+        public IActionResult EditarEndereco(Endereco endereco)
         {
-            _service.Editar(p);
+            try
+            {
+                _service.Editar(endereco);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest($"Ocorreu um erro ao editar um Cliente, " +
+                                   $"o erro foi \n {erro.Message}");
+                throw;
+            }
+            
         }
         /// <summary>
         /// Endpoint para Deletando um Endereco
         /// </summary>
         /// <param name="endereco"></param>
         [HttpDelete("deletar-endereco")]
-        public void DeletarEndereco(int id)
+        public IActionResult DeletarEndereco(int id)
         {
-            _service.Remover(id);
+            try
+            {
+                _service.Remover(id);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest($"Ocorreu um erro ao deletar um Cliente, " +
+                                   $"o erro foi \n {erro.Message}");
+                throw;
+
+            }
+            
         }
     }
 }
